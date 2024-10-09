@@ -3,30 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Пример Box-model</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Практическое задание - Базовая стилизация</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="header">
-      <h1>Добро пожаловать на мой сайт</h1>
-      <p>Это базовая структура веб-страницы.</p>
+      <h1>Заголовок сайта</h1>
+      <h2>Подзаголовок</h2>
     </div>
 
-    <div class="navigation">
-      <p>Навигационная панель</p>
-    </div>
+    <div class="main-content">
+      <div class="section">
+        <div class="article">
+          <p>Текст первого уровня. Здесь находится основное описание.</p>
+          <div class="sub-article">
+            <p>
+              Текст второго уровня. Вложенный блок для дополнительных пояснений.
+            </p>
+          </div>
+        </div>
+        <div class="image-block">
+          <img src="img/lesson6/img_1.jpg" alt="Описание изображения" />
+          <p>Изображение с описанием.</p>
+        </div>
+      </div>
 
-    <div class="content">
-      <h2>О нас</h2>
-      <p>Это секция контента, где мы рассказываем что-то важное.</p>
-      <!-- Элемент для демонстрации Box-model -->
-      <div class="content-box">
-        <p>Демонстрация модели коробки (Box-model).</p>
+      <div class="section">
+        <div class="article">
+          <p>Ещё один текст первого уровня.</p>
+          <div class="image-block">
+            <img
+              src="img/lesson6/img_2.jpg"
+              alt="Описание второго изображения"
+            />
+            <p>Описание</p>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="footer">
-      <p>Информация в подвале сайта</p>
+      <p>Футер страницы</p>
     </div>
   </body>
 </html>
