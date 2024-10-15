@@ -1,137 +1,20 @@
-/* 1. Установить для всех заголовков <h2> размер шрифта 24px, сделать шрифт жирным, а внешнии отступы от текста сверху и снизу равными 15px. */
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 15px;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-/* 2. Установить размер шрифта для всех параграфов 18px и внутренние отступы 10px. */
-p {
-  font-size: 18px;
-  padding: 10px;
-}
-
-/* 3. Примените box-sizing: border-box ко всем элементам. */
-* {
-  box-sizing: border-box;
-}
-
-/* 4. Установить фон #35424a для header и footer, а также цвет текста белый. */
-.header,
-.footer {
-  background-color: #35424a;
-  color: #ffffff;
-}
-
-/* 5. Установить размер шрифта 32px для заголовка первого уровня и отступы снизу 20px. */
-h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-/* 6. Стилизация текста: выравнивание текста по ширине justify и межстрочный интервал 1.6. */
-p {
-  line-height: 1.6;
-  text-align: justify;
-}
-
-/* 7. Примените внешнии отступы сверху и снизу 20px и внутреннии отступы 20px и границы 2px solid #dddddd к секциям. */
-.section {
-  margin: 20px 0;
-  padding: 20px;
-  border: 2px solid #dddddd;
-}
-
-/* 8. Установить размер изображения: ширина 100% и максимальная ширина 300px, а так же внешний отступ сверху 15px. */
-img {
+.content {
   width: 100%;
-  max-width: 300px;
-  margin-top: 15px;
+  height: 1000px;
+  background-color: lightyellow;
 }
 
-/* 9. Установить цвет ссылок внутри навигации белым и убрать подчеркивание. */
-.nav ul li a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-/* 10. Установить отступы между элементами списка навигации 10px слева и справа. Убирать стандартные маркеры (точки, кружки или квадраты) у элементов списка. Выравнить содержимое блока по центру. */
-.nav ul {
-  list-style: none;
-  text-align: center;
-}
-
-/* 11. Установить для всех разделов фон светло-серый #f9f9f9. */
-.section {
-  background-color: #f9f9f9;
-}
-
-/* 12. Установить для всех секций закругленные углы 5px. */
-.section {
-  border-radius: 5px;
-}
-
-/* 13. Установить для всех изображений рамку в 1px сплошную черного цвета. */
-img {
-  border: 1px solid #000;
-}
-
-/* 14. Установить для подвала верхний отступ 30px и текст по центру. */
-.footer {
-  margin-top: 30px;
-  text-align: center;
-}
-
-/* 15. Установить для текста в подвале размер шрифта 14px и цвет серый. */
-.footer p {
-  font-size: 14px;
-  color: #777;
-}
-
-/* 16. Элементы в списке выставить в одну строку с помощью inline-block. */
-.nav ul li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-/* 17. Для header и footer установить внутренние отступы 20px, а так же выравните текст по центу.*/
-.header,
-.footer {
-  padding: 20px;
-  text-align: center;
-}
-
-/* 18. Выставить все заголовки второго уровня по центру экрана. */
-h2 {
-  text-align: center;
-}
-
-/* 19. Иконку whatsapp сделать fixed и установить в правый нижний угол экрана. Убрать черную рамку в этой картинки. Установить ширину ярлыка 70px.*/
-.whatsapp img {
-  border: none;
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  width: 70px;
-}
-
-/* 20. У ссылки установить атрибут target так, что бы сайт открылся в новой вкладке браузера. */
-
-/* 21. Картинки в третьей секции наложить друг на друга, как изображено на картинке. */
-#first_img {
-  position: relative;
-  z-index: 3;
-}
-
-#second_img {
-  position: relative;
-  right: 200px;
-  z-index: 2;
-}
-
-#third_img {
-  position: relative;
-  right: 400px;
-  z-index: 1;
+.fixed-box {
+  width: 200px;
+  height: 100px;
+  background-color: lightgreen;
+  position: fixed; /* Фиксированное позиционирование */
+  top: 20px;
+  right: 20px;
+  z-index: 100; /* Большой z-index, чтобы элемент был всегда наверху */
 }
