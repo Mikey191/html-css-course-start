@@ -1,0 +1,123 @@
+/* Общие стили */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  background-color: #5d8aa8;
+  color: white;
+  padding: 10px 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+main {
+  display: block;
+  margin: 20px;
+  padding: 20px;
+  background-color: #fafafa;
+}
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #5d8aa8;
+  color: white;
+}
+
+/* Стили для секции Введение */
+.intro-section {
+  background-color: #f1f1f1;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* Блок слева */
+.left-section {
+  background-color: #e0f7fa;
+  padding: 15px;
+  margin: 20px 0;
+  width: 45%;
+  float: left;
+  clear: both;
+  position: relative;
+}
+
+/* Блок справа (сайдбар) */
+.sidebar {
+  background-color: #fff9c4;
+  padding: 15px;
+  width: 45%;
+  float: right;
+  margin: 20px 0;
+  position: relative;
+}
+
+/* Позиционирование синих квадратов в углу */
+.left-section::before,
+.left-section::after,
+.sidebar::before,
+.sidebar::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  position: absolute;
+}
+
+.left-section::before,
+.sidebar::before {
+  top: 0;
+  left: 0;
+}
+
+.left-section::after,
+.sidebar::after {
+  bottom: 0;
+  right: 0;
+}
+
+/* Стили текста */
+p {
+  font-size: 16px;
+  color: #333;
+}
+
+h2 {
+  color: #00796b;
+  transition: color 0.3s ease;
+}
+
+/* Изменение цвета заголовков при наведении */
+h2:hover {
+  color: #ff5722;
+}
+
+/* Выравнивание текста для каждого блока */
+.intro-section p {
+  text-align: left;
+}
+
+.sidebar p {
+  text-align: right;
+}
+
+.left-section p {
+  text-align: left;
+}
+
+/* Стили для параграфов внутри секций */
+.content p:nth-of-type(2) {
+  color: #ff5722;
+}
+
+footer {
+  clear: both;
+}
