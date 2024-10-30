@@ -1,123 +1,200 @@
 /* Общие стили */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f0e1;
+  color: #5b4033; /* 1. Основной цвет текста, коричневый */
+}
+
+/* Основной контейнер */
+.container {
+  max-width: 1200px; /* 4. Ограничение ширины основного контейнера */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Хедер */
+.header {
+  position: sticky; /* 5. Прикрепляем хедер к верху страницы */
+  top: 0;
+  z-index: 10;
+  background-color: #3e2e26; /* 1. Коричневый фон для хедера */
+  color: #fff;
+  padding: 10px 0;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px; /* 4. Центрируем содержимое хедера */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.company-name {
+  font-size: 1.5rem;
+}
+
+.navigation {
+  display: flex;
+  gap: 15px;
+}
+
+.navigation a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navigation a:hover {
+  color: #c8b7a1;
+}
+
+/* Блок "О нас" */
+.about {
+  display: flex;
+  /* align-items: start; */
+  justify-content: center;
+  gap: 5%;
+  padding: 40px 20px;
+  background: #f7e4d1;
+}
+
+.about-image {
+  max-width: 50%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.about-text {
+  text-align: start;
+}
+
+.about-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.about-text p {
+  padding: 5px;
   line-height: 1.6;
 }
 
-header {
+/* Блок товаров */
+.products {
+  padding: 40px 0;
+  background-color: #fff;
   text-align: center;
-  background-color: #5d8aa8;
-  color: white;
-  padding: 10px 0;
 }
 
-h1 {
-  margin: 0;
+.products h2 {
+  margin-bottom: 30px;
 }
 
-main {
-  display: block;
-  margin: 20px;
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.product-card {
+  flex-basis: 22%;
+  background-color: #f4e8db;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  /* position: relative; */
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-card h3 {
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: bold;
+  color: #5b4033;
+  margin-bottom: 10px;
+}
+
+.add-to-cart {
+  background-color: #3e2e26;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Футер */
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
-  background-color: #fafafa;
+  background-color: #3e2e26;
+  color: #fff;
 }
 
-footer {
-  text-align: center;
-  padding: 10px 0;
-  background-color: #5d8aa8;
-  color: white;
+.footer-left,
+.footer-right {
+  display: flex;
+  align-items: center;
 }
 
-/* Стили для секции Введение */
-.intro-section {
-  background-color: #f1f1f1;
-  padding: 15px;
-  margin-bottom: 20px;
+.footer-left .logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
-/* Блок слева */
-.left-section {
-  background-color: #e0f7fa;
-  padding: 15px;
-  margin: 20px 0;
-  width: 45%;
-  float: left;
-  clear: both;
-  position: relative;
+.footer-right p {
+  margin: 0 10px;
+  font-size: 0.9rem;
 }
 
-/* Блок справа (сайдбар) */
-.sidebar {
-  background-color: #fff9c4;
-  padding: 15px;
-  width: 45%;
-  float: right;
-  margin: 20px 0;
-  position: relative;
+.footer-right p::before {
+  content: "📞";
 }
 
-/* Позиционирование синих квадратов в углу */
-.left-section::before,
-.left-section::after,
-.sidebar::before,
-.sidebar::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background-color: blue;
-  position: absolute;
-}
-
-.left-section::before,
-.sidebar::before {
-  top: 0;
-  left: 0;
-}
-
-.left-section::after,
-.sidebar::after {
-  bottom: 0;
-  right: 0;
-}
-
-/* Стили текста */
-p {
-  font-size: 16px;
-  color: #333;
-}
-
-h2 {
-  color: #00796b;
-  transition: color 0.3s ease;
-}
-
-/* Изменение цвета заголовков при наведении */
-h2:hover {
-  color: #ff5722;
-}
-
-/* Выравнивание текста для каждого блока */
-.intro-section p {
-  text-align: left;
-}
-
-.sidebar p {
-  text-align: right;
-}
-
-.left-section p {
-  text-align: left;
-}
-
-/* Стили для параграфов внутри секций */
-.content p:nth-of-type(2) {
-  color: #ff5722;
-}
-
-footer {
-  clear: both;
+.footer-right p + p::before {
+  content: "📧";
 }
