@@ -5031,7 +5031,7 @@ body {
 **Пример работы с grid-линиями**:
 
 ```css
-Копировать код .card:nth-child(3) {
+.card:nth-child(3) {
   grid-column-start: 1; /* Элемент начинается с первой линии */
   grid-column-end: 4; /* Элемент заканчивается на третьей линии, охватывая три колонки */
   grid-row: 1 / 2; /* Занимает первую строку */
@@ -5117,7 +5117,6 @@ body {
 **Обновленная HTML-разметка с дополнительными блоками**:
 
 ```html
-Копировать код
 <header class="header">Header Content</header>
 <aside class="sidebar">Sidebar Content</aside>
 <main class="main">
@@ -5382,7 +5381,7 @@ body {
    - Внутри списка `<ul>` добавьте три элемента списка `<li>`, каждый из которых должен содержать ссылку `<a>`.
    - Ссылки должны содержать текст: `«Telegram»`, `«WhatsApp»` и `«ВКонтакте»` соответственно.
 
-#### Практика. Стилизация с помощью Grid.
+#### Практика #1. Стилизация с помощью Grid.
 
 1. **Общие стили**:
 
@@ -5529,3 +5528,968 @@ body {
 #### Результат верстки должен быть **примерно** таким:
 
 <img src="img/lesson11/result.jpg" width="1200">
+
+#### Практика #2. Стилизация с помощью Grid.
+
+#### **Создание html-разметки документа**:
+
+1. Создайте HTML-документ, добавьте основные структуры: `<!DOCTYPE html>`, `<html>`, `<head>` с мета-тегами и `<body>`.
+2. Внутри `<body>` создайте контейнер с классом admin-panel.
+3. Внутри контейнера добавьте тег (`header`) с классом `header`. Вставьте текст "Admin Dashboard".
+4. Добавьте боковую панель (`aside`) с классом sidebar. Вставьте список ссылок (`<ul>`), где каждая ссылка (`<li>`) представляет раздел панели (например, `Dashboard`, `Reports`, `Tasks`, `Messages`, `Settings`).
+5. Добавьте основное содержимое страницы, используя тег `<main>` с классом `main-content`.
+6. Внутри основного содержимого:
+   1. Создайте первый раздел (`<section>`) с классом `functions`.
+      - Добавьте заголовок второго уровня с текстом `"Admin Functions"`.
+      - Вставьте контейнер (`<div>`) с классом cards для карточек.
+      - Добавьте 8 карточек (`<div>` с классом card):
+        - Заголовок третьего уровня с названием функции (например, `User Management`).
+        - Описание функции в параграфе (например, `Manage user accounts and permissions`).
+   2. Создайте второй раздел (`<section>`) с классом `reports`.
+      - Добавьте заголовок второго уровня с текстом `"Reports"`.
+      - Вставьте контейнер (`<div>`) с классом cards для карточек отчетов.
+      - Добавьте 4 карточки. В каждой карточке:
+        - Добавьте изображение (`<img>`), задав src для графика.
+        - Заголовок третьего уровня с названием отчета
+        - Описание отчета в параграфе.
+   3. Создайте третий раздел (`<section>`) с классом employees.
+      - Добавьте заголовок второго уровня с текстом "Management".
+      - Вставьте контейнер (`<div>`) с классом `cards` для карточек сотрудников.
+      - Добавьте 4 карточки. Каждая карточка должна содержать:
+        - Левую часть:
+          - Контейнер (`<div>` с классом `employee-photo`).
+          - Изображение сотрудника (`<img>`), задав src
+          - Оценку сотрудника в элементе (например, `<span>`).
+        - Правую часть:
+          - Контейнер (`<div>` с классом `employee-info`).
+          - Параграф с именем сотрудника.
+          - Параграф с должностью сотрудника.
+          - Параграф с описанием обязанностей.
+7. Вне основного содержимого, добавьте футер (`footer`) с классом `footer`, указав текст "© 2024 Admin Panel".
+
+#### **Создание стилизации для разметки**:
+
+1. Подключение шрифтов: Подключите шрифты `"Oswald"` и `"Roboto"` через Google Fonts.
+2. Общие настройки. Для всех элементов (\*):
+   - Установите обнуление отступов и полей: margin: 0; padding: 0.
+   - Примените свойство box-sizing: border-box, чтобы границы и отступы входили в размер элемента.
+3. Для body:
+   - Установите шрифт по умолчанию: font-family: 'Roboto', sans-serif;.
+   - Задайте цвет фона: background-color: #3c3c3c; (светло-темный серый).
+   - Установите цвет текста: color: #e0e0e0; (светлый серый).
+   - Определите межстрочный интервал: line-height: 1.6; для удобства чтения.
+4. Стили для заголовков. Для заголовков (h1, h2, h3):
+   - Установите шрифт: font-family: 'Oswald', sans-serif;.
+   - Сделайте текст жирным: font-weight: bold;.
+5. Стили для .admin-panel:
+   - Используйте CSS Grid для расположения областей (display: grid;)
+   - Укажите области сетки через свойство grid-template-areas:
+     ```css
+     "header header"
+     "sidebar main"
+     "sidebar main"
+     "footer footer"
+     ```
+   - Определите высоту и ширину областей:
+     - Ряды: grid-template-rows: auto 1fr auto;.
+     - Колонки: grid-template-columns: 250px 1fr;.
+   - Добавьте расстояние между элементами: gap: 20px;.
+   - Задайте минимальную высоту панели: min-height: 100vh;.
+6. Стили для .header:
+   - Укажите область сетки: grid-area: header;.
+   - Задайте фон: background-color: #4b4b4b; (темно-серый).
+   - Цвет текста: color: #ffffff;.
+   - Размер шрифта: font-size: 28px; для выделения.
+   - Установите выравнивание текста по центру: text-align: center;.
+   - Добавьте внутренние отступы: padding: 20px;.
+7. Стили для .sidebar:
+   - Укажите область сетки: grid-area: sidebar;.
+   - Установите фон: background-color: #2f2f2f; (более темный серый).
+   - Цвет текста: color: #ffffff;.
+   - Внутренние отступы: padding: 20px;.
+8. Стили для списка навигации:
+   - Для списка (ul) уберите маркеры: Установите стиль списка: list-style: none;.
+   - Для пунктов списка (li): Добавьте нижний отступ: margin: 15px 0;.
+   - Для ссылок (a):
+     - Уберите подчеркивание: text-decoration: none;.
+     - Цвет текста: color: #e0e0e0;.
+     - Сделайте плавный переход для изменения цвета: transition: color 0.3s;.
+   - Для состояния :hover:
+     - Сделайте текст жирным: font-weight: 500;.
+     - Измените цвет текста на белый: color: #ffffff;.
+     - Добавьте подчеркивание: text-decoration: underline;.
+   - Для первого элемента `.sidebar li:first-of-type a`:
+     - Сделайте текст жирным: font-weight: 500;.
+     - Измените цвет текста на белый: color: #ffffff;.
+     - Добавьте подчеркивание: text-decoration: underline;.
+9. Стили для .main-content:
+   - Определите область сетки: grid-area: main;.
+   - Используйте display: flex; для вертикального расположения секций
+   - Установите направление: flex-direction: column;
+   - Задайте расстояние между секциями: gap: 30px;
+   - Добавьте внутренние отступы: padding: 20px;
+10. Стили для сетки карточек (.cards):
+    - Настройте сетку для карточек: display: grid;.
+    - Укажите количество колонок: grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));.
+    - Добавьте отступы между карточками: gap: 20px;.
+11. Стили для самих карточек (.card):
+    - Фон: background-color: #4b4b4b;.
+    - Закругление углов: border-radius: 5px;.
+    - Текст выравнивайте по центру: text-align: center;.
+    - Добавьте эффект при наведении:
+      - Цвет текста: color: white;.
+      - Тень: box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);.
+      - Эффект подсветки текста: text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);.
+    - Для первого элемента (.card:first-child):
+      - Цвет текста: color: white;.
+      - Тень: box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);.
+      - Эффект подсветки текста: text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);.
+12. Стили для изображений в отчетах (.reports .card img):
+    - Установите максимальную ширину изображения: max-width: 200px;.
+    - Добавьте нижний отступ: margin-bottom: 10px;.
+13. Стили для карточек сотрудников (.employees .card):
+    - Устанавливаем флекс-контейнер для карточки display: flex;
+    - Выравниваем элементы по верхнему краю align-items: flex-start;
+    - Устанавливаем промежуток между элементами внутри карточки gap: 15px;
+14. Стили для блока-обертки сотрудника (.employee-photo):
+    - Устанавливаем флекс-контейнер display: flex;
+    - Располагаем элементы в столбик flex-direction: column;
+    - Выравниваем текст по центру text-align: center;
+15. Стили для изображения сотрудника (.employee-photo img)
+    - Устанавливаем ширину и высоту изображения width: 80px; и height: 80px;
+    - Делаем изображение круглым border-radius: 50%;
+    - Добавляем отступ снизу margin-bottom: 10px;
+16. Стили для рейтинга (.rating)
+    - Делаем текст жирным font-weight: bold;
+17. Стили для информации о сотруднике (.employee-info)
+    - Выравниваем текст по левому краю text-align: left;
+18. Стили для параграфов информации (.employee-info p)
+    - Устанавливаем отступы сверху и снизу для параграфов margin: 5px 0;
+19. Стили для футера (.footer)
+    - Устанавливаем область сетки для футера grid-area: footer;
+    - Устанавливаем цвет фона background-color: #4b4b4b;
+    - Устанавливаем цвет текста color: #ffffff;
+    - Выравниваем текст по центру text-align: center;
+    - Добавляем внутренние отступы padding: 10px;
+
+## Урок 13. Стилизация input.
+
+### 13.1 Введение
+
+#### Что такое `<input>`?
+
+`<input>` — это HTML-элемент, используемый для **создания интерактивных элементов в формах**, таких как текстовые поля, кнопки, переключатели, загрузчики файлов и другие. **Он принимает пользовательский ввод**, который может быть **отправлен на сервер** или **обработан с помощью JavaScript**.
+
+#### Почему важно стилизовать `<input>`?
+
+- **Улучшение пользовательского опыта (UX)**: **Привлекательный дизайн помогает пользователям быстрее понять, как взаимодействовать с элементом**. Правильно оформленные поля **визуально показывают состояние: активность, ошибки, успех**.
+
+- **Доступность**: Четкая стилизация состояния фокуса и ошибок помогает пользователям с ограниченными возможностями.
+
+- **Согласованность дизайна**: Оформленные `<input>` выглядят так, как задумано, независимо от браузера (поскольку разные браузеры применяют свои стили по умолчанию).
+  Улучшение брендинга:
+
+- **Стилизация может отражать фирменный стиль и эстетику веб-сайта**.
+
+#### Основные особенности `<input>`:
+
+- Может содержать **текст**, **числа**, **файлы** или **предоставлять возможность выбора**.
+- **Использует атрибуты для настройки** (например, `placeholder`, `required`, `disabled`).
+- **Работает в связке с `<label>` для улучшения доступности**.
+
+#### Пример:
+
+Базовое текстовое поле с начальной стилизацией:
+
+```html
+<form>
+  <label for="name">Ваше имя:</label>
+  <input type="text" id="name" placeholder="Введите имя" />
+</form>
+```
+
+```css
+input[type="text"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+```
+
+#### Объяснение:
+
+- Используем `width` и `max-width`, чтобы **ограничить размер поля**.
+- Добавляем отступы (`padding`) для удобного ввода текста.
+- Оформляем границы (`border`) и добавляем закругление углов (`border-radius`).
+- При фокусе (`:focus`) меняем цвет границы и добавляем эффект свечения (`box-shadow`), чтобы визуально показать, что поле активно
+
+### 13.2 Описание и назначение типов `<input>`
+
+1. `text`
+
+- **Описание**: Поле ввода текста. По умолчанию отображает однострочное текстовое поле. Подходит для ввода любых текстовых данных (имя, адрес, комментарий и т.д.).
+- **Для чего нужен**: Используется для ввода произвольного текста.
+- **Пример**:
+  ```html
+  <input type="text" placeholder="Введите ваше имя" />
+  ```
+
+2. `password`
+
+- **Описание**: Поле ввода текста, где символы скрываются (обычно заменяются символами • или \*). Текст отображается только при вводе, затем скрывается.
+- **Для чего нужен**: Используется для ввода паролей или другой конфиденциальной информации.
+- **Пример**:
+  ```html
+  <input type="password" placeholder="Введите пароль" />
+  ```
+
+3. `email`
+
+- **Описание**: Поле ввода для электронной почты. Встроенная валидация: проверяет наличие символов @ и домена. В мобильных браузерах отображает клавиатуру с символами для электронной почты.
+- **Для чего нужен**: Для ввода и проверки электронной почты.
+- **Пример**:
+
+```html
+<input type="email" placeholder="Введите вашу почту" />
+```
+
+4. `tel`
+
+- **Описание**: Поле для ввода телефонного номера. Не включает встроенной валидации. На мобильных устройствах открывает цифровую клавиатуру.
+- **Для чего нужен**: Для удобного ввода номера телефона.
+- **Пример**:
+  ```html
+  <input type="tel" placeholder="+7 (___) ___-__-__" />
+  ```
+
+5. `number`
+
+- **Описание**: Поле для ввода чисел. Добавляет кнопки увеличения/уменьшения значения.Поддерживает атрибуты min, max, step.
+- **Для чего нужен**: Для ввода числовых данных, таких как возраст, количество, цена и т.д.
+- **Пример**:
+
+```html
+<input type="number" min="1" max="10" step="1" />
+```
+
+6. `url`
+
+- **Описание**: Поле ввода для URL-адресов. Встроенная валидация: проверяет наличие корректного формата URL (например, https://).
+- **Для чего нужен**: Для ввода веб-адресов.
+- **Пример**:
+
+```html
+<input type="url" placeholder="Введите URL" />
+```
+
+7. `search`
+
+- **Описание**: Поле ввода для поисковых запросов. Внешне похоже на text, но имеет дополнительные функции в некоторых браузерах (например, кнопку очистки).
+- **Для чего нужен**: Для создания поля поиска.
+- **Пример**:
+
+```html
+<input type="search" placeholder="Введите запрос" />
+```
+
+8. `date`, `datetime-local`, `month`, `time`, `week`
+
+- `date`: Поле для выбора даты.
+- `datetime-local`: Поле для выбора даты и времени.
+- `month`: Поле для выбора месяца и года.
+- `time`: Поле для выбора времени.
+- `week`: Поле для выбора недели.
+- Для чего нужны: Позволяют пользователю удобно выбирать дату, время или интервал.
+- **Пример (выбор даты)**:
+
+```html
+<input type="date" />
+```
+
+9. `color`
+
+- Описание: Поле для выбора цвета. Открывает цветовую палитру в браузере.
+- Для чего нужен: Для ввода/выбора цвета.
+- Пример:
+
+```html
+<input type="color" />
+```
+
+10. `checkbox`
+
+- **Описание**: Флажок (чекбокс), который может быть установлен или снят. Позволяет выбирать несколько значений одновременно.
+- **Для чего нужен**: Для выбора одного или нескольких пунктов из списка.
+- **Пример**:
+
+```html
+<input type="checkbox" id="agree" />
+<label for="agree">Согласен с условиями</label>
+```
+
+11. `radio`
+
+- **Описание**: Радиокнопка (переключатель), позволяет выбрать только одно значение из группы.
+- **Для чего нужен**: Для выбора одного пункта из нескольких.
+- **Пример**:
+
+```html
+<input type="radio" name="gender" value="male" /> Мужчина
+<input type="radio" name="gender" value="female" /> Женщина
+```
+
+12. `range`
+
+- **Описание**: Ползунок для выбора числового значения. Поддерживает атрибуты min, max, step.
+- **Для чего нужен**: Для удобного выбора диапазона (например, громкости, яркости).
+- **Пример**:
+
+```html
+<input type="range" min="0" max="100" step="10" />
+```
+
+13. `file`
+
+- **Описание**: Поле для загрузки файлов. Открывает окно выбора файла.
+- **Для чего нужен**: Для загрузки файлов с устройства пользователя.
+- **Пример**:
+
+```html
+<input type="file" accept="image/*" />
+```
+
+14. `hidden`
+
+- **Описание**: Скрытое поле. Не отображается на странице, но может отправляться с формой.
+- **Для чего нужен**: Для передачи дополнительных данных (например, идентификатора пользователя).
+- **Пример**:
+
+```html
+<input type="hidden" name="user_id" value="12345" />
+```
+
+15. `button`
+
+- **Описание**: Простая кнопка без встроенной логики. Логику нужно добавлять вручную (например, через JavaScript).
+- **Для чего нужен**: Для выполнения произвольных действий, не связанных с формой.
+- **Пример**:
+
+```html
+<input type="button" value="Кликни меня" />
+```
+
+16. `submit`
+
+- **Описание**: Кнопка отправки формы. Отправляет данные формы на сервер.
+- **Для чего нужен**: Для отправки формы.
+- **Пример**:
+
+```html
+<input type="submit" value="Отправить" />
+```
+
+17. `reset`
+
+- **Описание**: Кнопка сброса формы. Сбрасывает значения всех полей формы к исходным.
+- **Для чего нужен**: Для быстрого очистки формы.
+- **Пример**:
+
+```html
+<input type="reset" value="Сбросить" />
+```
+
+### 13.3 Примеры использования `<input>` разных типов.
+
+`<input>` — **универсальный элемент, поддерживающий различные типы данных**. Каждый тип определяет поведение и отображение элемента.
+
+#### 1. **Текстовые поля** (`text`, `password`, `email`, `tel`, `search`, `url`):
+
+- Используются для **ввода текста**, **паролей**, **электронной почты**, **номеров телефонов**, **URL-адресов** и **поиска**.
+
+- **Пример — Поле для пароля**:
+
+  ```html
+  <form>
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" placeholder="Введите пароль" />
+  </form>
+  ```
+
+  ```css
+  input[type="password"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  input[type="password"]:focus {
+    background-color: #fff;
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+  }
+  ```
+
+- **Объяснение**: Добавляем **эффект изменения фона при фокусе**, чтобы пользователю было удобнее ориентироваться.
+  Применяем **мягкие переходы через `transition` для плавного изменения стилей**.
+
+#### 2. **Числовые поля** (`number`, `range`):
+
+- `number`: **Ввод чисел с возможностью ограничения диапазона** (`min`, `max`).
+- `range`: **Ползунок для выбора значений**.
+
+- **Пример — Ползунок**:
+
+  ```html
+  <form>
+    <label for="volume">Громкость:</label>
+    <input type="range" id="volume" min="0" max="100" value="50" />
+  </form>
+  ```
+
+  Стилизация:
+
+  ```css
+  input[type="range"] {
+    -webkit-appearance: none; /* Убираем стандартный стиль */
+    width: 100%;
+    max-width: 300px;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    background: #0056b3;
+  }
+  ```
+
+- **Объяснение**: Используем `::-webkit-slider-thumb` для **стилизации бегунка**. **Меняем цвет бегунка при наведении**, **добавляя интерактивности**.
+
+#### 3. **Выбор значений** (`checkbox`, `radio`):
+
+- `checkbox`: Позволяет выбирать несколько значений.
+- `radio`: Выбор одного значения из группы.
+
+- **Пример — Радиокнопки**:
+
+  ```html
+  <form>
+    <label><input type="radio" name="gender" value="male" /> Мужчина</label>
+    <label><input type="radio" name="gender" value="female" /> Женщина</label>
+  </form>
+  ```
+
+  **Стилизация**:
+
+  ```css
+  input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="radio"]:checked {
+    background-color: #007bff;
+  }
+  ```
+
+#### 4. **Кнопки** (`button`, `submit`, `reset`): Используются для отправки формы или выполнения действий.
+
+- **Пример — Кнопка отправки**:
+
+  ```html
+  <form>
+    <input type="submit" value="Отправить" />
+  </form>
+  ```
+
+  **Стилизация**:
+
+  ```css
+  input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  ```
+
+### 13.4 Основные способы стилизации `<input>`
+
+#### 1. Стилизация текстовых полей (text, password, email, и т.д.). Свойства для базового оформления:
+
+1. `width`, `height`: Задают размеры текстового поля.
+
+   ```css
+   input {
+     width: 300px;
+     height: 40px;
+   }
+   ```
+
+2. `padding`: Добавляет внутренние отступы, чтобы текст не прилегал к границам.
+
+   ```css
+   input {
+     padding: 10px;
+   }
+   ```
+
+3. `border`, `border-radius`: Создают границы и задают их форму (например, скругление углов).
+
+   ```css
+   input {
+     border: 2px solid #007bff;
+     border-radius: 10px;
+   }
+   ```
+
+4. `font-family`, `font-size`, `color`: Настраивают шрифт, его размер и цвет текста.
+
+   ```css
+   input {
+     font-family: "Arial", sans-serif;
+     font-size: 16px;
+     color: #333;
+   }
+   ```
+
+5. `background-color`, `box-shadow`: Изменяют цвет фона и добавляют тени.
+
+   ```css
+   input {
+     background-color: #f9f9f9;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   }
+   ```
+
+**Пример базового оформления текстового поля**:
+
+```html
+<input type="text" placeholder="Введите текст" />
+```
+
+**Стилизация**:
+
+```css
+input {
+  width: 300px;
+  height: 40px;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 91, 187, 0.8);
+}
+```
+
+#### 2. Стилизация кнопок (`button`, `submit`, `reset`). Изменение цвета, формы, анимации.
+
+```html
+<input type="submit" value="Отправить" />
+```
+
+**Стилизация**:
+
+```css
+input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+input[type="submit"]:active {
+  transform: scale(0.95);
+}
+```
+
+#### 3. Стилизация чекбоксов и радиокнопок. Замена стандартных элементов на кастомные.
+
+**С помощью свойства appearance: none можно убрать стандартный стиль**:
+
+```html
+<label> <input type="checkbox" /> Согласен </label>
+<label> <input type="radio" name="choice" /> Выбор 1 </label>
+```
+
+**Стилизация**:
+
+```css
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #007bff;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+```
+
+#### 4. Стилизация ползунков (range). Стилизация полосы и бегунка.
+
+**Полоса (::-webkit-slider-runnable-track) и бегунок (::-webkit-slider-thumb) стилизуются с помощью псевдоэлементов**:
+
+```html
+<input type="range" min="0" max="100" />
+```
+
+**Стилизация**:
+
+```css
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: #0056b3;
+}
+```
+
+#### 5. Стилизация выпадающих списков (`select`). Использование псевдоэлементов.
+
+**Скрытие стандартной стрелки с помощью `appearance: none` и создание кастомной через `::after`**:
+
+```html
+<div class="custom-select">
+  <select>
+    <option>Выбор 1</option>
+    <option>Выбор 2</option>
+  </select>
+</div>
+```
+
+**Стилизация**:
+
+```css
+.custom-select {
+  position: relative;
+  width: 200px;
+}
+
+select {
+  appearance: none; /* Убираем стандартный стиль */
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  background: white;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+.custom-select::after {
+  content: "▼"; /* Стрелка */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Игнорируем события мыши */
+}
+```
+
+**Объяснение**: Элемент `<select>` помещен в `<div class="custom-select">`, что **позволяет использовать псевдоэлемент** `::after` для добавления стрелки. В противном случае свойство `appearance: none;` убирает стандартный стиль элемента, включая стрелку, и в результате вы не увидите никакой стрелки.
+
+#### 6. Стилизация загрузки файлов (file). Скрытие стандартной кнопки
+
+**Через display: none скрываем стандартный `<input>`, а стили задаём для `<label>`**.
+
+```html
+<label for="file-upload">Загрузить файл</label>
+<input type="file" id="file-upload" />
+```
+
+**Стилизация**:
+
+```css
+input[type="file"] {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+label:hover {
+  background-color: #0056b3;
+}
+```
+
+### 13.4 Псевдоклассы для `<input>`. Использование псевдоклассов для изменения стилей.
+
+Псевдоклассы позволяют изменять стили элементов в зависимости от их состояния. Они особенно полезны для `<input>`, так как его состояния (активное, заполненное, недоступное и т. д.) напрямую влияют на пользовательский интерфейс.
+
+1. `:focus` – стилизация активного элемента.
+   - **Псевдокласс `:focus`** применяется к элементу, который находится **в фокусе** (например, когда пользователь щёлкнул на поле ввода или выбрал его с помощью клавиши Tab).
+2. `:hover` – стилизация при наведении.
+   - **Псевдокласс `:hover`** применяется к элементу, когда **пользователь наводит на него курсор мыши**.
+3. `:disabled` и `:read-only` – оформление заблокированных полей.
+   - **`:disabled`** применяется к полям, которые заблокированы для ввода
+   - **`:read-only`** применяется к полям, которые доступны только для чтения.
+4. `:required` и `:valid` – стилизация на основе проверки заполненности.
+   - `:required` применяется к обязательным для заполнения полям.
+   - `:valid` применяется к полям, которые соответствуют требованиям проверки.
+
+**Примеры комбинирования стилей с псевдоклассами**:
+
+```html
+<label for="name">Имя (обязательно):</label>
+<input type="text" id="name" name="name" required />
+
+<label for="email">Email (обязательно):</label>
+<input type="email" id="email" name="email" required />
+
+<label for="age">Возраст (по желанию):</label>
+<input type="number" id="age" name="age" min="0" />
+
+<label for="comments">Комментарии (только для чтения):</label>
+<textarea id="comments" name="comments" readonly>
+Эти комментарии нельзя редактировать.</textarea
+>
+
+<label for="disabled-input">Заблокированное поле:</label>
+<input type="text" id="disabled-input" name="disabled-input" disabled />
+```
+
+**Стилизация**:
+
+```css
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+input:hover,
+textarea:hover {
+  border-color: #007bff;
+}
+
+input:disabled,
+textarea[readonly] {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+  cursor: not-allowed;
+}
+
+input:required:valid {
+  border-color: #28a745; /* Зеленый для валидных полей */
+}
+
+input:required:invalid {
+  border-color: #dc3545; /* Красный для невалидных полей */
+}
+```
+
+### 13.5 Стилизация `<input>` через `<label>`
+
+Скрытие `<input>` с помощью CSS и стилизация через связанный `<label>` позволяет **создать полностью кастомизированные интерфейсы для элементов формы**. Этот подход **широко используется** для **чекбоксов**, **радиокнопок**, **загрузчиков файлов** и других элементов, где требуется гибкость оформления.
+
+#### Основной принцип стилизация через связанный `<label>`:
+
+1. Скрытие `<input>`:
+
+- Скрываем элемент с помощью `display: none` или `opacity: 0;` `position: absolute;`.
+- Элемент остаётся функциональным, но становится невидимым.
+
+2. Привязка `<label>`:
+   Связываем `<label>` с `<input>` с помощью атрибута `for` (значение совпадает с `id` у `<input>`).
+   Альтернативный способ — поместить `<input>` внутрь `<label>`
+
+#### Пример: Кастомный чекбокс
+
+```html
+<label class="custom-checkbox">
+  <input type="checkbox" id="checkbox" />
+  <span class="checkmark"></span>
+  Я согласен с условиями
+</label>
+```
+
+**Стилизация**:
+
+```css
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.custom-checkbox input {
+  display: none; /* Скрываем стандартный чекбокс */
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  margin-right: 10px;
+  position: relative;
+  background-color: white;
+  transition: background-color 0.3s;
+}
+
+.custom-checkbox input:checked + .checkmark {
+  background-color: #007bff;
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+```
+
+Стандартный чекбокс скрыт, а вместо него используется элемент `<span>` с классом `checkmark`, который стилизуется для отображения состояния чекбокса. При выборе чекбокса изменяется цвет фона и добавляется галочка.
+
+#### Пример: Кастомный файл-загрузчик
+
+```html
+<label class="custom-file-upload">
+  <input type="file" id="file-upload" />
+  Выберите файл
+</label>
+```
+
+**Стилизация**:
+
+```css
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  background-color: white;
+  color: #007bff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-file-upload input {
+  display: none; /* Скрываем стандартный файл-загрузчик */
+}
+
+.custom-file-upload:hover {
+  background-color: #007bff;
+  color: white;
+}
+```
+
+Стандартный элемент загрузки файла также скрыт, и вместо него используется стилизованный `<label>`, который выглядит как кнопка. При наведении на кнопку изменяется цвет фона и текста, что делает интерфейс более интерактивным.
