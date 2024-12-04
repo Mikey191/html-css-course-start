@@ -6592,6 +6592,9 @@ body {
 
 <img src="img/lesson12/result_768.jpg.png" alt="768" width="150">
 
+### Практика #2.
+
+
 ## Урок 13. Стилизация input.
 
 ### 13.1 Введение
