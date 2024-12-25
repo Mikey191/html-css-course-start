@@ -1,27 +1,32 @@
 # Практика #1
 
 ## **Результат верстки**:
+
 <img src="img/lesson_practice/result1.jpg" width="1000px">
 
 ## **Подсказки**:
+
 ### Футтер будет прилипать к нижнему краю экрана
+
 ```css
 body {
-    display: flex;
+  display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
 /* Контейнер с основным контентом */
-main { 
-    flex: 1;
+main {
+  flex: 1;
 }
 
 footer {
-    margin-top: auto;
+  margin-top: auto;
 }
 ```
+
 ### Стилизация карточки
+
 ```css
 .card {
   background-color: white;
@@ -34,6 +39,7 @@ footer {
 ```
 
 ### Стилизация кнопки в карточке
+
 ```css
 .card button {
   padding: 0.5rem 1rem;
@@ -51,81 +57,82 @@ footer {
 ```
 
 ## **Разметка**:
+
 ```html
 <body>
-    <header class="header">
-      <div class="container header-container">
-        <div class="logo">LOGO</div>
-        <nav class="navigation">
-          <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">LOGO</div>
+      <nav class="navigation">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="main">
+    <div class="container main-container">
+      <div class="card">
+        <h2>Service 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button>Learn More</button>
       </div>
-    </header>
-    <main class="main">
-      <div class="container main-container">
-        <div class="card">
-          <h2>Service 1</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Service 2</h2>
-          <p>
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Service 3</h2>
-          <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-          </p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Service 4</h2>
-          <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-          </p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Service 5</h2>
-          <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-          </p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Service 6</h2>
-          <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-          </p>
-          <button>Learn More</button>
-        </div>
+      <div class="card">
+        <h2>Service 2</h2>
+        <p>
+          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <button>Learn More</button>
       </div>
-    </main>
-    <footer class="footer">
-      <div class="container footer-container">
-        <div class="footer-about">
-          <h3>About Us</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            euismod.
-          </p>
-        </div>
-        <div class="footer-contact">
-          <h3>Contact</h3>
-          <p>Email: info@example.com</p>
-          <p>Phone: +123 456 7890</p>
-        </div>
+      <div class="card">
+        <h2>Service 3</h2>
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+        <button>Learn More</button>
       </div>
-    </footer>
-  </body>
+      <div class="card">
+        <h2>Service 4</h2>
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+        <button>Learn More</button>
+      </div>
+      <div class="card">
+        <h2>Service 5</h2>
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+        <button>Learn More</button>
+      </div>
+      <div class="card">
+        <h2>Service 6</h2>
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+        <button>Learn More</button>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-about">
+        <h3>About Us</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+          euismod.
+        </p>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>Email: info@example.com</p>
+        <p>Phone: +123 456 7890</p>
+      </div>
+    </div>
+  </footer>
+</body>
 ```
 
 ## **Стилизация**:
@@ -276,17 +283,22 @@ a {
 # Практика #2
 
 ## **Результат верстки**:
+
 <img src="img/lesson_practice/result2.jpg" width="1000px">
 
 ## **Подсказки**:
+
 ### Стилизация input
+
 ```css
 input {
   padding: 0.5rem;
   font-size: 1rem;
 }
 ```
+
 ### Стилизация button в блоке с боковым меню
+
 ```css
 button {
   padding: 0.5rem;
@@ -303,6 +315,7 @@ button:hover {
 ```
 
 ### Стилизация карточки
+
 ```css
 .card {
   background-color: white;
@@ -315,6 +328,7 @@ button:hover {
 ```
 
 ### Стилизация кнопки в карточке
+
 ```css
 .card button {
   padding: 0.5rem 1rem;
@@ -332,88 +346,90 @@ button:hover {
 ```
 
 ## **Разметка**:
+
 ```html
 <body>
-    <div class="grid-container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <form class="search-form">
-          <input type="text" placeholder="Search..." />
-          <button type="button">Search</button>
-        </form>
-        <nav class="menu">
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </aside>
+  <div class="grid-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <form class="search-form">
+        <input type="text" placeholder="Search..." />
+        <button type="button">Search</button>
+      </form>
+      <nav class="menu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-      <!-- Main Content -->
-      <main class="content">
-        <div class="card">
-          <h2>Card 1</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Card 2</h2>
-          <p>
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Card 3</h2>
-          <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-          </p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Card 4</h2>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore.
-          </p>
-          <button>Learn More</button>
-        </div>
+    <!-- Main Content -->
+    <main class="content">
+      <div class="card">
+        <h2>Card 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button>Learn More</button>
+      </div>
+      <div class="card">
+        <h2>Card 2</h2>
+        <p>
+          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <button>Learn More</button>
+      </div>
+      <div class="card">
+        <h2>Card 3</h2>
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+        <button>Learn More</button>
+      </div>
+      <div class="card">
+        <h2>Card 4</h2>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore.
+        </p>
+        <button>Learn More</button>
+      </div>
 
-        <div class="card">
-          <h2>Card 5</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Card 6</h2>
-          <p>
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Card 7</h2>
-          <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-          </p>
-          <button>Learn More</button>
-        </div>
-        <div class="card">
-          <h2>Card 8</h2>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore.
-          </p>
-          <button>Learn More</button>
-        </div>
-      </main>
-    </div>
-  </body>
+      <div class="card">
+        <h2>Card 5</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button>Learn More</button>
+      </div>
+      <div class="card">
+        <h2>Card 6</h2>
+        <p>
+          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <button>Learn More</button>
+      </div>
+      <div class="card">
+        <h2>Card 7</h2>
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+        <button>Learn More</button>
+      </div>
+      <div class="card">
+        <h2>Card 8</h2>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore.
+        </p>
+        <button>Learn More</button>
+      </div>
+    </main>
+  </div>
+</body>
 ```
 
 ## **Стилизация**:
+
 ```css
 body {
   margin: 0;
@@ -542,40 +558,44 @@ ul {
 # Практика #3
 
 ## Картинка для фона
+
 <img src="img/lesson_practice/background.jpg" width="500px">
 
 ## **Результат верстки**:
+
 <img src="img/lesson_practice/result3.jpg" width="1000px">
 
 ## **Разметка**:
+
 ```html
 <body>
-    <header class="header">
-      <div class="container header-container">
-        <div class="logo">LOGO</div>
-        <nav class="navigation">
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <section id="about" class="about">
-      <div class="about-content">
-        <h1>Welcome to Our Company</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          vel erat nec orci venenatis commodo. Cras vulputate sollicitudin
-          metus, at pharetra lorem luctus vel.
-        </p>
-      </div>
-    </section>
-  </body>
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">LOGO</div>
+      <nav class="navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section id="about" class="about">
+    <div class="about-content">
+      <h1>Welcome to Our Company</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel
+        erat nec orci venenatis commodo. Cras vulputate sollicitudin metus, at
+        pharetra lorem luctus vel.
+      </p>
+    </div>
+  </section>
+</body>
 ```
 
 ## **Стилизация**:
+
 ```css
 body {
   margin: 0;
@@ -638,7 +658,7 @@ a {
 }
 
 .navigation a:hover {
-  color: #f4d03f; 
+  color: #f4d03f;
 }
 
 .about {
