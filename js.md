@@ -1189,3 +1189,233 @@ console.log(bankerRound(2.7)); // 2
 console.log(bankerRound(3.2)); // 4
 console.log(bankerRound(4.3)); // 4
 ```
+
+## Отличие `id=Log` от `class=Log`
+
+```html
+<body>
+  <p id="Log"></p>
+  <p class="secondLog"></p>
+
+  <script src="app.js"></script>
+</body>
+```
+
+```javascript
+function addIdLog(text) {
+  Log.innerHTML = `<br>${text}</br>`;
+}
+
+function addClassLog(text) {
+  secondLog.innerHTML = `<h2>${text}</h2>`;
+}
+```
+
+В JavaScript есть важное различие между использованием id и class
+
+### Почему Log.innerHTML работает?
+
+Когда вы задаете элементу атрибут `id`, браузер автоматически создает `глобальную переменную` с именем, совпадающим с этим `id`. В нашем случае, элемент с `id="Log"` становится доступным через глобальную переменную `Log`. Поэтому вызов `Log.innerHTML` работает корректно.
+
+### Почему secondLog.innerHTML не работает?
+
+Для элементов с классами (`class`) такой глобальной переменной не создается. Чтобы получить доступ к элементу с классом secondLog, нужно использовать методы работы с DOM, такие как `document.querySelector` или `document.getElementsByClassName`.
+
+Например:
+
+```javascript
+function addClassLog(text) {
+  const secondLog = document.querySelector(".second_log"); // Находим элемент с классом
+  secondLog.innerHTML = `<h2>${text}</h2>`;
+}
+```
+
+# 5 Детальнее о функциях
+
+## Объект `arguments`
+
+### 1. Цель и задачи объекта
+
+Объект `arguments` представляет собой массивоподобную структуру, содержащую все аргументы, переданные функции. Основные задачи:
+
+- Позволяет работать с переменным числом аргументов.
+- Дает доступ к переданным значениям без явного указания параметров.
+- Используется в старом коде, но в ES6+ предпочтительно использовать оператор `...rest`.
+
+Пример использования `arguments`:
+
+```js
+function sum() {
+  let total = 0;
+  for (let i = 0; i < arguments.length; i++) {
+    total += arguments[i];
+  }
+  return total;
+}
+console.log(sum(1, 2, 3, 4)); // 10
+```
+
+### 2. Свойство `length`
+
+`arguments.length` возвращает количество аргументов, переданных в функцию.
+
+```js
+function showArgs() {
+  document.getElementById(
+    "output"
+  ).innerHTML = `Функция вызвана с ${arguments.length} аргументами`;
+}
+showArgs(1, 2, 3);
+```
+
+### 3. Особенности функций в JavaScript
+
+- В отличие от строгих языков, количество переданных аргументов может отличаться от числа объявленных параметров.
+- Объект `arguments` доступен только внутри обычных функций (не стрелочных).
+
+```js
+const arrowFunc = () => {
+  console.log(arguments); // Ошибка: arguments не определён
+};
+```
+
+## Область видимости переменной в JavaScript
+
+### 1. Что такое область видимости?
+
+Область видимости (Scope) — это контекст, в котором переменные и функции доступны в коде. В JavaScript существуют три основные области видимости:
+
+- **Глобальная** — переменные доступны во всем коде.
+- **Функциональная** — переменные доступны только внутри функции.
+- **Блочная** — переменные доступны только в пределах блока `{}`.
+
+### 2. Объект `window`
+
+Глобальные переменные в JavaScript становятся свойствами `window` (в браузере) или `globalThis` (универсально).
+
+```js
+var globalVar = "Hello";
+document.getElementById("output").innerHTML = window.globalVar; // Hello
+```
+
+### 3. `var`, `let` и `const`
+
+#### `var`
+
+- Переменные, объявленные с `var`, поднимаются (hoisting).
+- Область видимости — функция.
+- Может быть переопределена.
+
+```js
+function exampleVar() {
+  if (true) {
+    var test = "Переменная var";
+  }
+  document.getElementById("output").innerHTML = test; // Доступна вне блока
+}
+exampleVar();
+```
+
+#### `let`
+
+- Область видимости — блок `{}`.
+- Не поднимается.
+- Можно переопределить.
+
+```js
+function exampleLet() {
+  if (true) {
+    let test = "Переменная let";
+    document.getElementById("output").innerHTML = test;
+  }
+  // console.log(test); // Ошибка: test не определена вне блока
+}
+exampleLet();
+```
+
+#### `const`
+
+- Область видимости — блок `{}`.
+- Не может быть изменена после инициализации.
+- Используется для неизменяемых значений.
+
+```js
+function exampleConst() {
+  const pi = 3.1415;
+  document.getElementById("output").innerHTML = pi;
+}
+exampleConst();
+```
+
+### 4. Когда использовать `let`, `var`, `const`
+
+- **Используйте `var`** только если нужен функциональный scope (например, в старом коде).
+- **Используйте `let`**, если переменная должна изменяться.
+- **Используйте `const`**, если значение переменной не должно изменяться.
+
+## Поднятие объявлений (Hoisting)
+
+### 1. Что такое поднятие?
+
+Поднятие (hoisting) — это механизм JavaScript, при котором объявления переменных и функций перемещаются в начало их области видимости перед выполнением кода. Однако только объявления поднимаются, но не их инициализация.
+
+### 2. Как работает hoisting с `var`, `let` и `const`?
+
+#### `var`
+
+Переменная поднимается, но инициализируется значением `undefined`:
+
+```js
+console.log(a); // undefined
+var a = 5;
+console.log(a); // 5
+```
+
+#### `let` и `const`
+
+Объявления `let` и `const` поднимаются, но не инициализируются, что приводит к ошибке, если попытаться обратиться к переменной до её объявления:
+
+```js
+console.log(b); // Ошибка: Cannot access 'b' before initialization
+let b = 10;
+```
+
+```js
+console.log(c); // Ошибка: Cannot access 'c' before initialization
+const c = 20;
+```
+
+### 3. Hoisting функций
+
+Функции, объявленные через `function declaration`, поднимаются полностью:
+
+```js
+hello(); // Работает
+function hello() {
+  console.log("Привет!");
+}
+```
+
+Но если использовать `function expression`, то hoisting не работает:
+
+```js
+sayHi(); // Ошибка: Cannot access 'sayHi' before initialization
+var sayHi = function () {
+  console.log("Привет!");
+};
+```
+
+### 4. Где hoisting работает корректно, а где вызывает ошибку?
+
+```js
+console.log(num); // undefined
+var num = 10;
+console.log(num); // 10
+```
+
+```js
+console.log(value); // Ошибка: Cannot access 'value' before initialization
+let value = 20;
+```
+
+**Вывод:** Используйте `let` и `const` вместо `var`, чтобы избежать ошибок, связанных с hoisting. `var` можно применять, если нужно объявление на уровне функции, но лучше избегать его использования в современном коде.

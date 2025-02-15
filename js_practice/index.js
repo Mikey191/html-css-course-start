@@ -9,3 +9,5 @@ function bankerRound(x){
 console.log(bankerRound(2.7)); // 2
 console.log(bankerRound(3.2)); // 4
 console.log(bankerRound(4.3)); // 4
+
+
