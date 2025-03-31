@@ -1653,9 +1653,11 @@ for (let key in rect) {
 # 7 "Массивы в JavaScript"
 
 ## 1. Что такое массив?
+
 Массив — это структура данных, которая позволяет хранить набор значений под одним именем. Каждый элемент массива имеет индекс, начиная с 0. В отличие от многих языков программирования, в JavaScript массив может содержать элементы разных типов.
 
 Пример массива с разными типами данных:
+
 ```js
 let mixedArray = [42, "Hello", true, { name: "Alice" }, [1, 2, 3]];
 console.log(mixedArray);
@@ -1664,44 +1666,56 @@ console.log(mixedArray);
 ## 2. Создание массива
 
 ### Способ 1: Использование конструктора `Array`
+
 ```js
 let arr1 = new Array(); // пустой массив
 let arr2 = new Array(5); // массив с длиной 5
 let arr3 = new Array("apple", "banana", "cherry");
 console.log(arr3);
 ```
+
 Этот метод не рекомендуется из-за двусмысленности (например, `new Array(5)` создаст пустой массив длиной 5, а `new Array(5, 10)` создаст массив с двумя числами).
 
 ### Способ 2: Использование литерала массива `[]`
+
 ```js
 let arr1 = []; // пустой массив
 let arr2 = [10, 20, 30];
 let fruits = ["apple", "banana", "cherry"];
 console.log(fruits);
 ```
+
 Этот способ удобнее и является предпочтительным.
 
 ## 3. Доступ к элементам массива
+
 Доступ к элементам массива осуществляется по индексу:
+
 ```js
 let numbers = [5, 10, 15];
 console.log(numbers[0]); // 5
 console.log(numbers[1]); // 10
 console.log(numbers[2]); // 15
 ```
+
 Можно изменять элементы массива:
+
 ```js
 numbers[1] = 99;
 console.log(numbers); // [5, 99, 15]
 ```
 
 ## 4. Свойство `length`
+
 Свойство `length` показывает количество элементов в массиве:
+
 ```js
 let colors = ["red", "green", "blue"];
 console.log(colors.length); // 3
 ```
+
 Если изменить `length`, массив уменьшится или увеличится:
+
 ```js
 colors.length = 2;
 console.log(colors); // ["red", "green"]
@@ -1710,50 +1724,64 @@ console.log(colors); // ["red", "green", empty × 3]
 ```
 
 ## 5. Перебор массива
+
 Перебрать массив можно с помощью цикла `for`:
+
 ```js
 let numbers = [10, 20, 30, 40];
 for (let i = 0; i < numbers.length; i++) {
-    console.log(numbers[i]);
+  console.log(numbers[i]);
 }
 ```
+
 Альтернативный способ — `forEach`:
+
 ```js
-numbers.forEach(function(number) {
-    console.log(number);
+numbers.forEach(function (number) {
+  console.log(number);
 });
 ```
+
 Или с использованием стрелочной функции:
+
 ```js
-numbers.forEach(num => console.log(num));
+numbers.forEach((num) => console.log(num));
 ```
+
 Перебор с помощью цикла for...of:
+
 ```javascript
 let numbers = [10, 20, 30, 40];
 for (let num of numbers) {
-    console.log(num); 
+  console.log(num);
 }
 ```
+
 `forEach()` тоже удобен для обхода массива, но он не поддерживает `break` и `continue`, а `for...of` поддерживает.
 
 ## 6. Многомерные массивы
+
 Массивы могут содержать другие массивы:
+
 ```js
 let matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
 ];
 console.log(matrix[0][1]); // 2
 ```
 
 ## 7. Методы массивов
+
 ### Поиск элементов
+
 - `indexOf(value)` — возвращает индекс первого найденного элемента или `-1`, если элемента нет.
 - `lastIndexOf(value)` — аналогично, но ищет с конца.
 - `includes(value)` — проверяет, есть ли элемент в массиве.
 
 Пример:
+
 ```js
 let items = ["pen", "pencil", "notebook", "pen"];
 console.log(items.indexOf("pen")); // 0
@@ -1762,12 +1790,14 @@ console.log(items.includes("pencil")); // true
 ```
 
 ### Добавление и удаление элементов
+
 - `push(value)` — добавляет элемент в конец.
 - `pop()` — удаляет последний элемент.
 - `unshift(value)` — добавляет элемент в начало.
 - `shift()` — удаляет первый элемент.
 
 Пример:
+
 ```js
 let numbers = [1, 2, 3];
 numbers.push(4);
@@ -1777,10 +1807,12 @@ console.log(numbers); // [1, 2, 3]
 ```
 
 ### Изменение массива
+
 - `splice(index, count, ...items)` — удаляет или заменяет элементы.
 - `slice(start, end)` — возвращает копию части массива.
 
 Пример:
+
 ```js
 let arr = ["a", "b", "c", "d"];
 console.log(arr.slice(1, 3)); // ["b", "c"]
@@ -1794,14 +1826,14 @@ console.log(arr); // ["a", "b", "X", "d"]
 
 ```javascript
 let numbers = [5, 12, 1, 45, 3];
-console.log(numbers.sort());  
+console.log(numbers.sort());
 // Ожидаем [1, 3, 5, 12, 45], но получаем [1, 12, 3, 45, 5]
 ```
 
 Чтобы отсортировать числа правильно, нужно передать компараторную функцию:
 
 ```javascript
-let arr = [1, 3, 10, 5, 2, 1, 11, 20, 31]
+let arr = [1, 3, 10, 5, 2, 1, 11, 20, 31];
 
 console.log(arr);
 
@@ -1830,17 +1862,19 @@ console.log(arr);
 ```
 
 ### Итерация по массиву
+
 - `map(callback)` — создает новый массив, применяя функцию к каждому элементу.
 - `filter(callback)` — создает массив, оставляя только те элементы, для которых функция вернула `true`.
 - `reduce(callback, initialValue)` — вычисляет одно значение из массива.
 
 Пример:
+
 ```js
 let numbers = [1, 2, 3, 4, 5];
-let doubled = numbers.map(num => num * 2);
+let doubled = numbers.map((num) => num * 2);
 console.log(doubled); // [2, 4, 6, 8, 10]
 
-let evens = numbers.filter(num => num % 2 === 0);
+let evens = numbers.filter((num) => num % 2 === 0);
 console.log(evens); // [2, 4]
 
 let sum = numbers.reduce((acc, num) => acc + num, 0);
@@ -1848,6 +1882,7 @@ console.log(sum); // 15
 ```
 
 ### 8. Задания для практики
+
 1. Создайте массив из 5 случайных чисел и выведите его в консоль.
 2. Напишите функцию, которая принимает массив чисел и возвращает новый массив с удвоенными значениями.
 3. Создайте многомерный массив (3x3) и выведите сумму всех его элементов.
@@ -1856,3 +1891,416 @@ console.log(sum); // 15
 
 Эта лекция поможет вам освоить массивы в JavaScript, научиться их создавать, изменять и обрабатывать с помощью встроенных методов!
 
+# 8 "Строки в JavaScript. Объект String"
+
+## Введение
+
+В JavaScript строки являются основным типом данных, предназначенным для работы с текстовой информацией. В отличие от некоторых других языков, в JavaScript нет отдельного типа для символов, поэтому строка с одним символом - это все та же строка.
+
+Строки можно записывать в одинарных (' '), двойных (" ") и шаблонных кавычках (\` \`). Использование шаблонных кавычек позволяет встраивать переменные и выражения прямо в строку. Рассмотрим примеры:
+
+```javascript
+let str1 = "Привет, мир!";
+let str2 = "JavaScript - это интересно!";
+let name = "Андрей";
+let str3 = `Привет, ${name}!`; // Используем шаблонные строки
+console.log(str3); // Привет, Андрей!
+```
+
+## Экранирование специальных символов
+
+JavaScript поддерживает специальные escape-последовательности:
+
+- `\n` - перенос строки
+- `\t` - табуляция
+- `\\` - обратный слеш
+- `\"` и `\'` - кавычки внутри строки
+
+Пример использования:
+
+```javascript
+let str = "Первая строка\nВторая строка";
+console.log(str);
+```
+
+## Доступ к символам строки
+
+Доступ к символам осуществляется через индекс (начиная с 0):
+
+```javascript
+let str = "JavaScript";
+console.log(str[0]); // J
+console.log(str[4]); // S
+```
+
+Строки в JavaScript **неизменяемы**. То есть, изменить отдельный символ строки нельзя, можно только создать новую строку:
+
+```javascript
+let str = "Привет";
+str[0] = "Х";
+console.log(str); // Все равно "Привет"
+```
+
+## Конкатенация строк
+
+Для объединения строк используется оператор `+` или метод `concat()`:
+
+```javascript
+let first = "Hello";
+let second = "World";
+let result = first + " " + second;
+console.log(result); // Hello World
+```
+
+## Свойства и методы String
+
+### `length` - длина строки
+
+```javascript
+let str = "JavaScript";
+console.log(str.length); // 10
+```
+
+### `charAt(index)` и `charCodeAt(index)`
+
+```javascript
+let str = "Hello";
+console.log(str.charAt(1)); // e
+console.log(str.charCodeAt(1)); // 101 (код символа 'e')
+```
+
+### `toUpperCase()` и `toLowerCase()`
+
+```javascript
+let str = "JavaScript";
+console.log(str.toUpperCase()); // JAVASCRIPT
+console.log(str.toLowerCase()); // javascript
+```
+
+### Поиск подстроки: `indexOf()` и `lastIndexOf()`
+
+```javascript
+let str = "apple, banana, cherry";
+console.log(str.indexOf("banana")); // 7
+console.log(str.indexOf("grape")); // -1 (не найдено)
+```
+
+### Извлечение подстроки: `substring()`, `substr()`
+
+```javascript
+let str = "Hello, World!";
+console.log(str.substring(0, 5)); // Hello
+console.log(str.substr(7, 5)); // World
+```
+
+### Сравнение строк: `localeCompare()`
+
+```javascript
+let str1 = "яблоко";
+let str2 = "банан";
+console.log(str1.localeCompare(str2)); // 1 (яблоко > банан в алфавите)
+```
+
+## Дополнительные методы объекта String.
+
+### `includes(searchString, position)` – проверяет, содержит ли строка указанную подстроку.
+
+```js
+let str = "Hello, world!";
+console.log(str.includes("world")); // true
+console.log(str.includes("World")); // false (регистр имеет значение)
+```
+
+### `startsWith(searchString, position)` – проверяет, начинается ли строка с определённой подстроки.
+
+```js
+let str = "JavaScript";
+console.log(str.startsWith("Java")); // true
+console.log(str.startsWith("Script")); // false
+```
+
+### `endsWith(searchString, length)` – проверяет, заканчивается ли строка на указанную подстроку.
+
+```js
+let str = "example.txt";
+console.log(str.endsWith(".txt")); // true
+console.log(str.endsWith("example")); // false
+```
+
+### `trim()`, `trimStart()`, `trimEnd()` – удаляют пробелы в строке.
+
+```js
+let str = "   Hello, world!   ";
+console.log(str.trim()); // "Hello, world!"
+console.log(str.trimStart()); // "Hello, world!   "
+console.log(str.trimEnd()); // "   Hello, world!"
+```
+
+### `repeat(count)` – повторяет строку указанное количество раз.
+
+```js
+let str = "Ha!";
+console.log(str.repeat(3)); // "Ha!Ha!Ha!"
+```
+
+### `replace(searchValue, newValue)` и `replaceAll(searchValue, newValue)` – заменяют часть строки.
+
+```js
+let str = "I love JavaScript!";
+console.log(str.replace("love", "like")); // "I like JavaScript!"
+console.log("aaa".replaceAll("a", "b")); // "bbb"
+```
+
+### `split(separator, limit)` – разбивает строку на массив подстрок.
+
+```js
+let str = "apple,banana,orange";
+console.log(str.split(",")); // ["apple", "banana", "orange"]
+```
+
+## Практические задания
+
+1. Создайте строку, содержащую вашу фамилию и имя. Используйте шаблонные строки, чтобы вставить ее в другой текст.
+2. Напишите код, который заменяет все пробелы в строке на `-`.
+3. Проверьте, содержится ли слово "JavaScript" в строке `"Изучаем JavaScript с нуля"`.
+4. Извлеките подстроку из строки `"Frontend Development"`, содержащую слово "Frontend".
+5. Напишите код, который считает количество вхождений буквы "а" в строке `"Мама мыла раму"`.
+
+# 9. "Задержки и интервалы в JavaScript"
+
+## Введение
+
+В JavaScript есть механизмы для выполнения кода через определенный промежуток времени. Например, в онлайн-играх можно отсчитывать время до окончания уровня, а на сайтах — обновлять данные без перезагрузки страницы. Для этого используются таймеры и интервалы.
+
+## `setTimeout`
+
+Функция `setTimeout` позволяет выполнить код или вызвать функцию через определенное время (в миллисекундах).
+
+### Синтаксис:
+
+```js
+setTimeout(функция, задержка, аргумент1, аргумент2, ...);
+```
+
+- **функция** — вызываемая функция.
+- **задержка** — время задержки в миллисекундах (1000 мс = 1 секунда).
+- **аргументы** (необязательные) — передаются в вызываемую функцию.
+
+### Пример: простая задержка
+
+```js
+function sayHello() {
+  alert("Hello, world!");
+}
+setTimeout(sayHello, 2000); // Выведет сообщение через 2 секунды
+```
+
+### Пример: передача аргументов
+
+```js
+function sum(a, b) {
+  alert(a + b);
+}
+setTimeout(sum, 1500, 5, 10); // Через 1.5 секунды покажет 15
+```
+
+### Отмена `setTimeout`
+
+Таймер можно отменить с помощью `clearTimeout`.
+
+```js
+function showMessage() {
+  alert("Это сообщение не появится");
+}
+var timerId = setTimeout(showMessage, 3000);
+clearTimeout(timerId); // Отмена вызова
+```
+
+## `setInterval`
+
+Функция `setInterval` выполняет код или вызывает функцию через равные промежутки времени.
+
+### Синтаксис:
+
+```js
+setInterval(функция, интервал, аргумент1, аргумент2, ...);
+```
+
+- **функция** — вызываемая функция.
+- **интервал** — промежуток времени между вызовами в миллисекундах.
+- **аргументы** (необязательные) — передаются в вызываемую функцию.
+
+### Пример: повторяющийся вызов
+
+```js
+function showTime() {
+  console.log("Прошла еще одна секунда");
+}
+setInterval(showTime, 1000); // Сообщение в консоли каждую секунду
+```
+
+### Пример: счетчик
+
+```js
+var counter = 0;
+function count() {
+  counter++;
+  console.log("Счетчик: " + counter);
+}
+var intervalId = setInterval(count, 1000);
+```
+
+### Остановка `setInterval`
+
+Функцию можно остановить с помощью `clearInterval`.
+
+```js
+var count = 0;
+function stopAfterThree() {
+  count++;
+  console.log("Вызов №" + count);
+  if (count === 3) {
+    clearInterval(intervalId);
+  }
+}
+var intervalId = setInterval(stopAfterThree, 2000); // Остановится после 3 раз
+```
+
+## Альтернатива `setInterval` через `setTimeout`
+
+`setTimeout` можно использовать для повторного вызова функции.
+
+```js
+var counter = 0;
+function repeatAction() {
+  counter++;
+  console.log("Вызов №" + counter);
+  if (counter < 3) {
+    setTimeout(repeatAction, 2000); // Вызывает саму себя
+  }
+}
+setTimeout(repeatAction, 2000);
+```
+
+Этот метод позволяет менять интервал между вызовами динамически.
+
+### Пример с изменяющимся интервалом
+
+```js
+var counter = 1;
+function dynamicTimeout() {
+  console.log("Вызов №" + counter);
+  var nextDelay = counter * 2000;
+  counter++;
+  if (counter <= 3) {
+    setTimeout(dynamicTimeout, nextDelay);
+  }
+}
+setTimeout(dynamicTimeout, 2000);
+```
+
+## Практические задания
+
+1. Напишите функцию, которая через 3 секунды выведет `"Время вышло!"`.
+2. Создайте таймер, который выводит число от 1 до 5 с интервалом 1 секунда, а затем останавливается.
+3. Реализуйте аналог `setInterval`, используя рекурсивный `setTimeout`.
+
+# 10. "Использование математических возможностей в JavaScript"
+
+## Объект Math
+
+При решении задач в программировании часто требуются математические вычисления. В JavaScript для этого предусмотрен встроенный объект `Math`. Он содержит полезные свойства и методы для выполнения различных математических операций.
+
+## Свойства объекта Math
+
+Рассмотрим некоторые константы объекта `Math`:
+
+- **Math.PI** – число Пи (≈ 3.14159);
+- **Math.E** – число Эйлера (≈ 2.718);
+- **Math.SQRT2** – квадратный корень из 2 (≈ 1.414);
+- **Math.SQRT1_2** – квадратный корень из 1/2 (≈ 0.707).
+
+Пример использования:
+
+```js
+console.log(Math.PI); // 3.141592653589793
+console.log(Math.E); // 2.718281828459045
+```
+
+## Методы объекта Math
+
+### Округление чисел
+
+- **Math.ceil(x)** – округляет `x` вверх;
+- **Math.floor(x)** – округляет `x` вниз;
+- **Math.round(x)** – округляет `x` по математическим правилам;
+- **Math.trunc(x)** – отбрасывает дробную часть.
+
+Пример:
+
+```js
+console.log(Math.ceil(4.3)); // 5
+console.log(Math.floor(4.9)); // 4
+console.log(Math.round(4.5)); // 5
+console.log(Math.trunc(4.9)); // 4
+```
+
+### Степени и корни
+
+- **Math.pow(x, y)** – возводит `x` в степень `y`;
+- **Math.sqrt(x)** – извлекает квадратный корень из `x`.
+
+Пример:
+
+```js
+console.log(Math.pow(2, 3)); // 8
+console.log(Math.sqrt(16)); // 4
+```
+
+### Минимум, максимум и модуль числа
+
+- **Math.min(a, b, ...)** – возвращает минимальное значение;
+- **Math.max(a, b, ...)** – возвращает максимальное значение;
+- **Math.abs(x)** – возвращает модуль числа `x`.
+
+Пример:
+
+```js
+console.log(Math.min(3, -5, 10, 0)); // -5
+console.log(Math.max(3, -5, 10, 0)); // 10
+console.log(Math.abs(-42)); // 42
+```
+
+## Генерация случайных чисел
+
+Для генерации случайных чисел используется метод **Math.random()**. Он возвращает число в диапазоне от 0 (включительно) до 1 (не включительно).
+
+Примеры:
+
+```js
+console.log(Math.random()); // случайное число от 0 до 1
+```
+
+Как получить случайное число в другом диапазоне:
+
+- **от 0 до N**: `Math.floor(Math.random() * (N + 1))`;
+- **от A до B**: `Math.floor(Math.random() * (B - A + 1)) + A`.
+
+Примеры:
+
+```js
+console.log(Math.floor(Math.random() * 10)); // число от 0 до 9
+console.log(Math.floor(Math.random() * 11)); // число от 0 до 10
+console.log(Math.floor(Math.random() * (50 - 20 + 1)) + 20); // число от 20 до 50
+```
+
+## Практические задания
+
+1. Выведите в консоль значения `Math.PI`, `Math.E`, `Math.SQRT2`.
+2. Напишите программу, которая принимает число и округляет его:
+   - вверх (`Math.ceil`);
+   - вниз (`Math.floor`);
+   - по правилам математики (`Math.round`).
+3. Напишите функцию, которая принимает два числа и возвращает большее из них.
+4. Напишите программу, которая генерирует случайное число от 1 до 100.
+5. Создайте калькулятор, который запрашивает у пользователя число и выводит его квадратный корень.
