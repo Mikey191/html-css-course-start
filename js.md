@@ -2539,8 +2539,8 @@ for (let i = 0; i < 12; i++) {
 Пример такой ситуации — это использование методов массива. Например, у нас есть 2 группы студентов, представленные в виде массивов. Нам нужно перевести 2-х студентов из одной группы в другую. Сделаем это с помощью методов массивов splice() и concat():
 
 ```javascript
-let group1 = ['Deniels', 'Jonhson', 'Overton', 'Stufford', 'Templeton'],
-    group2 = ['Greenwood','Liner','Takerman'];
+let group1 = ["Deniels", "Jonhson", "Overton", "Stufford", "Templeton"],
+  group2 = ["Greenwood", "Liner", "Takerman"];
 let students = group1.splice(2, 2);
 console.log(students);
 group2 = group2.concat(students);
@@ -2562,54 +2562,58 @@ console.log(group1, group2);
 # 13. "Функции-конструкторы в JavaScript"
 
 ## 1. **Что такое функции-конструкторы?**
+
 Функции-конструкторы используются для создания множества однотипных объектов с одинаковыми свойствами и методами.
 
 Пример: создание объекта без конструктора:
+
 ```javascript
 let student = {
-   firstname: 'John',
-   lastname: 'Doe',
-   birthday: '01/01/2000',
-   showInfo: function(){
-       console.log(this.firstname + ' ' + this.lastname);
-   }
+  firstname: "John",
+  lastname: "Doe",
+  birthday: "01/01/2000",
+  showInfo: function () {
+    console.log(this.firstname + " " + this.lastname);
+  },
 };
 student.showInfo();
 ```
 
 ## 2. **Как создать функцию-конструктор?**
+
 Функции-конструкторы называются с заглавной буквы, а данные передаются через параметры. Свойства объекта создаются через `this`.
 
 Пример: функция-конструктор для создания объектов Student:
 
 ```javascript
 function Student(firstname, lastname, birthday) {
-    this.firstname = firstname;
-    this.lastname = lastname;
-    this.birthday = birthday;
-    this.showInfo = function() {
-        console.log('Student: ' + this.firstname + ' ' + this.lastname);
-    };
+  this.firstname = firstname;
+  this.lastname = lastname;
+  this.birthday = birthday;
+  this.showInfo = function () {
+    console.log("Student: " + this.firstname + " " + this.lastname);
+  };
 }
-let student1 = new Student('Jane', 'Doe', '02/02/1995');
+let student1 = new Student("Jane", "Doe", "02/02/1995");
 student1.showInfo();
 ```
 
 ## 3. **Важное отличие функции-конструктора от обычной функции**
+
 Функции-конструкторы возвращают объект с помощью `new`, без явного использования `return`.
 
 Пример: создание объекта без return:
 
 ```javascript
 function Hotel(name, rooms, bookedRooms) {
-    this.name = name;
-    this.rooms = rooms;
-    this.bookedRooms = bookedRooms;
-    this.availableRooms = function() {
-        return this.rooms - this.bookedRooms;
-    };
+  this.name = name;
+  this.rooms = rooms;
+  this.bookedRooms = bookedRooms;
+  this.availableRooms = function () {
+    return this.rooms - this.bookedRooms;
+  };
 }
-let hotel = new Hotel('Grand Palace', 100, 50);
+let hotel = new Hotel("Grand Palace", 100, 50);
 console.log(hotel.availableRooms());
 ```
 
@@ -2623,26 +2627,29 @@ console.log(hotel.availableRooms());
 
 ```javascript
 function Person(name, age) {
-    this.name = name;  // Свойство name будет добавлено к объекту
-    this.age = age;    // Свойство age будет добавлено к объекту
-    this.sayHello = function() {  // Метод, который будет доступен у объекта
-        console.log(`Привет, меня зовут ${this.name} и мне ${this.age} лет.`);
-    };
+  this.name = name; // Свойство name будет добавлено к объекту
+  this.age = age; // Свойство age будет добавлено к объекту
+  this.sayHello = function () {
+    // Метод, который будет доступен у объекта
+    console.log(`Привет, меня зовут ${this.name} и мне ${this.age} лет.`);
+  };
 }
 
-let person1 = new Person('Иван', 25);
-let person2 = new Person('Мария', 30);
+let person1 = new Person("Иван", 25);
+let person2 = new Person("Мария", 30);
 
-person1.sayHello();  // Привет, меня зовут Иван и мне 25 лет.
-person2.sayHello();  // Привет, меня зовут Мария и мне 30 лет.
+person1.sayHello(); // Привет, меня зовут Иван и мне 25 лет.
+person2.sayHello(); // Привет, меня зовут Мария и мне 30 лет.
 ```
 
 ### Объяснение:
+
 - При создании нового объекта `person1` или `person2` с помощью функции-конструктора Person, `this` в функции ссылается на этот конкретный объект.
 
 - Свойства name и age, а также метод sayHello привязываются к этому объекту, и могут быть использованы для каждого объекта, созданного через new Person().
 
 ### Важный момент:
+
 - `this` всегда ссылается на объект, создаваемый при вызове функции-конструктора.
 
 - Если мы не используем оператор `new`, то `this` будет ссылаться на глобальный объект (например, window в браузере).
@@ -2652,6 +2659,7 @@ person2.sayHello();  // Привет, меня зовут Мария и мне 3
 В `JavaScript`, когда мы создаём объект через функцию-конструктор, этот объект автоматически получает доступ к прототипу конструктора. Прототип — это специальный объект, к которому привязываются все методы и свойства, общие для всех объектов, созданных через данный конструктор. Каждый объект, созданный с помощью конструктора, может наследовать свойства и методы, определённые в прототипе конструктора.
 
 ### Что такое прототип?
+
 - Прототип — это скрытый объект, к которому можно добавить методы или свойства.
 - Все объекты, созданные с помощью функции-конструктора, имеют ссылку на свой прототип.
 - Если метод или свойство не найдено в объекте, JavaScript будет искать его в прототипе.
@@ -2663,40 +2671,45 @@ person2.sayHello();  // Привет, меня зовут Мария и мне 3
 Предположим, у нас есть конструктор, создающий объект Book (книга). Мы хотим добавить новый метод isOld(), который будет проверять, является ли книга старой (более 50 лет).
 
 **Код с использованием прототипа**:
+
 ```javascript
 function Book(title, author, year) {
-    this.title = title;
-    this.author = author;
-    this.year = year;
+  this.title = title;
+  this.author = author;
+  this.year = year;
 }
 
 // Добавляем метод isOld() в прототип конструктора Book
-Book.prototype.isOld = function() {
-    return new Date().getFullYear() - this.year > 50;
+Book.prototype.isOld = function () {
+  return new Date().getFullYear() - this.year > 50;
 };
 
 // Создаём новый объект
-let book1 = new Book('1984', 'George Orwell', 1949);
-let book2 = new Book('JavaScript: The Good Parts', 'Douglas Crockford', 2008);
+let book1 = new Book("1984", "George Orwell", 1949);
+let book2 = new Book("JavaScript: The Good Parts", "Douglas Crockford", 2008);
 
 // Проверяем, является ли книга старой
-console.log(book1.isOld());  // true, книга старше 50 лет
-console.log(book2.isOld());  // false, книга младше 50 лет
+console.log(book1.isOld()); // true, книга старше 50 лет
+console.log(book2.isOld()); // false, книга младше 50 лет
 ```
 
 ### Объяснение:
+
 - Мы создаём конструктор Book, который принимает параметры `title`, `author` и `year`.
 - Метод `isOld()` добавляется в прототип конструктора Book с помощью Book.prototype.`isOld`. Теперь все объекты, созданные с помощью new Book(), могут использовать этот метод.
 - Метод `isOld()` проверяет, старше ли книга 50 лет, сравнивая текущий год с годом издания книги.
 
 ### Зачем использовать прототип?
+
 - Оптимизация памяти: Методы, добавленные в прототип, не создаются заново для каждого экземпляра объекта. Все экземпляры делят один и тот же метод, что экономит память.
 - Наследование: Прототипы позволяют объектам наследовать свойства и методы друг от друга, что способствует созданию более гибких и удобных иерархий.
 
 ### Как работает поиск по прототипу?
+
 - Когда мы вызываем метод book1.isOld(), JavaScript сначала ищет этот метод в объекте book1. Если его там нет, поиск продолжается в прототипе, где и находится метод isOld.
 
 ## Практические задания:
+
 1. Создайте объект студента с произвольными свойствами (имя, возраст, курс) и методом, который выводит информацию о студенте.
 
 2. Используя прототип, добавьте всем объектам студентов метод, который возвращает их статус (например, "Студент первого курса").
@@ -2714,4 +2727,315 @@ console.log(book2.isOld());  // false, книга младше 50 лет
 8. Создайте массив из объектов Book и выведите краткую информацию о каждой книге.
 
 9. В функции-конструкторе `Hotel` добавьте метод `bookRoom()`, который увеличивает число забронированных номеров на 1.
+
+# 14. **Классы в JavaScript**
+
+Классы в JavaScript создаются с помощью ключевого слова `class`, с заглавным именем.
+
+Внутри класса обязательно должен быть метод `constructor()`, в котором задаются свойства.
+
+Методы описываются как обычные функции, но без ключевого слова `function`.
+
+**Пример:**
+
+```js
+class Human {
+  constructor(firstname, lastname, birthday) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.birthday = birthday;
+  }
+  showInfo() {
+    console.log(this.firstname + " " + this.lastname);
+  }
+  showAge() {
+    const deltaTime = Date.now() - Date.parse(this.birthday);
+    const age = Math.floor(deltaTime / (365 * 24 * 60 * 60 * 1000));
+    console.log(
+      this.firstname + " " + this.lastname + " is " + age + " years old."
+    );
+  }
+}
+
+const john = new Human("John", "Smith", "09-17-2003");
+john.showInfo();
+john.showAge();
+console.log(john);
+```
+
+## Прототип в классах
+
+Методы класса автоматически добавляются в прототип. Это делает классы похожими на функции-конструкторы, но с более читаемым синтаксисом.
+
+**Пример:**
+
+```js
+class Rectangle {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+  square() {
+    return this.width * this.height;
+  }
+  perimeter() {
+    return 2 * (this.width + this.height);
+  }
+}
+
+let rect1 = new Rectangle(20, 30);
+console.log(rect1.square(), rect1.perimeter()); // 600 100
+
+let rect2 = new Rectangle(78, 92);
+console.log(rect2.square(), rect2.perimeter()); // 7176 340
+```
+
+## `this` в классах
+
+Ключевое слово `this` указывает на текущий экземпляр класса. Если его не использовать, данные не будут записаны в объект.
+
+**Неправильный пример:**
+
+```js
+class Rectangle {
+  constructor(width, height) {
+    width = width;
+    height = height;
+  }
+  square() {
+    return width * height;
+  }
+  perimeter() {
+    return 2 * (width + height);
+  }
+}
+```
+
+Такой код вызовет ошибку `ReferenceError`, потому что переменные `width` и `height` не были сохранены в `this` и недоступны вне конструктора.
+
+## Практические задания:
+
+1. Создайте класс Car, который будет описывать автомобиль.  
+   В классе должен быть:
+   - конструктор с параметрами brand, model, year;
+   - метод showInfo(), который выводит в консоль строку вида: "Toyota Camry (2020)".
+
+Создайте 2 экземпляра класса и вызовите для них метод showInfo().
+
+2. Создайте класс RectanglePlus, похожий на Rectangle из лекции.  
+   В нем должны быть:
+   - конструктор с параметрами width, height;
+   - метод area() — возвращает площадь;
+   - метод perimeter() — возвращает периметр;
+   - метод isSquare() — возвращает true, если ширина равна высоте.
+
+Создайте 1 прямоугольник и 1 квадрат и проверьте работу всех методов.
+
+# 15. "Фундаментальные принципы ООП"
+
+Объектно-ориентированное программирование (ООП) — это парадигма программирования, которая строится вокруг понятий объектов, классов, а также таких ключевых принципов, как:
+
+1. Инкапсуляция
+2. Наследование
+3. Полиморфизм
+4. Оператор instanceof
+5. Расширение стандартных классов
+
+## 1. Инкапсуляция
+
+Инкапсуляция — это механизм скрытия внутренней реализации объекта от внешнего мира. Это означает, что внутренние свойства (переменные) и методы могут быть приватными, т.е. доступны только внутри самого класса.
+
+### Примеры публичных свойств
+
+```javascript
+class Human {
+  constructor(firstname, lastname, birthday) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.birthday = birthday;
+  }
+}
+
+const john = new Human("John", "Smith", "09-17-2003");
+console.log(john.firstname); // John
+
+john.firstname = "Billy";
+console.log(john.firstname); // Billy
+```
+
+По умолчанию все свойства и методы в JavaScript — публичные. Мы свободно получаем и изменяем свойства объекта, что может быть небезопасно, если мы хотим защитить данные.
+
+### Приватные свойства
+
+Для создания приватных свойств используется символ #. Они объявляются вне конструктора, но инициализируются внутри него:
+
+```javascript
+class Human {
+  #id;
+
+  constructor(firstname, lastname, birthday) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.birthday = birthday;
+    this.#id = Math.floor(Math.random() * 1e6);
+  }
+}
+
+const john = new Human("John", "Smith", "09-17-2003");
+
+console.log(john.#id); // ❌ SyntaxError
+john.#id = 123;        // ❌ SyntaxError
+```
+
+JavaScript запрещает доступ к #id вне класса. Это и есть инкапсуляция.
+
+### Методы-аксессоры (getter и setter)
+
+Чтобы управлять приватными свойствами, используются геттеры и сеттеры:
+
+```js
+class Human {
+  #id;
+
+  constructor(firstname, lastname, birthday) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.birthday = birthday;
+    this.#id = Math.floor(Math.random() * 1e6);
+  }
+
+  get id() {
+    return this.#id;
+  }
+
+  set id(value) {
+    this.#id = value;
+  }
+}
+
+const john = new Human('John', 'Smith', '09-17-2003');
+console.log(john.id); // получаем значение через геттер
+john.id = 1;          // устанавливаем новое значение через сеттер
+console.log(john.id); // 1
+```
+
+**Важно**: Геттеры и сеттеры позволяют управлять доступом к приватным данным без прямого вмешательства во внутреннюю структуру.
+
+## 2. Наследование
+Наследование позволяет одному классу (дочернему) получить свойства и методы другого класса (родительского), избавляя от дублирования кода.
+
+### Класс Human (родитель)
+
+```js
+class Human {
+  constructor(firstname, lastname, birthday) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.birthday = birthday;
+  }
+
+  showInfo() {
+    console.log(`${this.firstname} ${this.lastname}`);
+  }
+
+  showAge() {
+    const deltaTime = Date.now() - Date.parse(this.birthday);
+    const age = Math.floor(deltaTime / (365 * 24 * 60 * 60 * 1000));
+    console.log(`${this.firstname} ${this.lastname} is ${age} years old.`);
+  }
+}
+```
+
+### Класс Teacher (дочерний)
+
+```js
+class Teacher extends Human {
+  constructor(firstname, lastname, birthday, subjects = []) {
+    super(firstname, lastname, birthday); // вызов конструктора родителя
+    this.subjects = subjects;
+  }
+
+  showSubjects() {
+    console.log(`${this.firstname} ${this.lastname} can teach ${this.subjects.join(', ')}`);
+  }
+}
+
+const kate = new Teacher('Kate', 'Lowdell', '07/15/1986', ['biology', 'geography']);
+kate.showInfo();       // наследуется
+kate.showAge();        // наследуется
+kate.showSubjects();   // метод дочернего класса
+```
+- Метод `super()` вызывает конструктор родителя.
+
+### Класс ITMentor (наследует от Teacher)
+
+```js
+class ITMentor extends Teacher {
+  constructor(firstname, lastname, birthday, subjects = [], level) {
+    super(firstname, lastname, birthday, subjects);
+    this.level = level;
+  }
+
+  showLevel() {
+    console.log(`${this.firstname} ${this.lastname} has level ${this.level}`);
+  }
+}
+
+const andrew = new ITMentor('Andrew', 'Phillipov', '07/22/1986', ['JS', 'React'], 'Senior');
+andrew.showInfo();       // из Human
+andrew.showSubjects();   // из Teacher
+andrew.showLevel();      // из ITMentor
+```
+- Класс ITMentor имеет доступ ко всем методам в цепочке Human → Teacher → ITMentor.
+
+## 3. Полиморфизм
+
+Полиморфизм — это способность объектов с одинаковым интерфейсом вести себя по-разному. Обычно он реализуется через переопределение методов в дочерних классах.
+
+```js
+class Human {
+  sayHello() {
+    console.log('Hello! I am a human.');
+  }
+}
+
+class Teacher extends Human {
+  sayHello() {
+    console.log('Hello! I am a teacher.');
+  }
+}
+
+class ITMentor extends Teacher {
+  sayHello() {
+    console.log('Hello! I am an IT mentor.');
+  }
+}
+
+const people = [
+  new Human(),
+  new Teacher(),
+  new ITMentor()
+];
+
+people.forEach(person => person.sayHello());
+```
+
+Один и тот же метод sayHello() работает по-разному в зависимости от конкретного объекта. Это и есть полиморфизм.
+
+## 4. Оператор instanceof
+Оператор instanceof позволяет проверить, принадлежит ли объект конкретному классу или его родителям.
+
+```js
+const kate = new Teacher('Kate', 'Lowdell', '07/15/1986', ['biology']);
+
+console.log(kate instanceof Teacher); // true
+console.log(kate instanceof Human);   // true
+console.log(kate instanceof Object);  // true
+```
+
+Это удобно для проверки типа объекта в рантайме — особенно, если у нас работает полиморфизм или сложная иерархия классов.
+
+## 5. Расширение стандартных классов
+
+В JavaScript можно наследоваться от встроенных классов, таких как Array, Error, HTMLElement, и добавлять им дополнительные возможности.
 
