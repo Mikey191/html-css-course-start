@@ -401,7 +401,7 @@ console.log(f.children); // все вложенные узлы формы
 
 ## Элементы вне формы
 
-Если элемент создан вне <form>, его можно "привязать" к форме через атрибут form:
+Если элемент создан вне `<form>`, его можно "привязать" к форме через атрибут form:
 
 ```html
 <form id="myForm">...</form>
@@ -474,7 +474,7 @@ console.log(f.children); // все вложенные узлы формы
 
   <select class="rounded" name="city">
     <option value="Moskva">Moskva</option>
-    <option value="St.Peterburg">St.Peterburg</option>
+    <option value="St.Petersburg">St.Petersburg</option>
     <option value="Kazan">Kazan</option>
     <option value="" disabled selected hidden>City</option>
   </select>
