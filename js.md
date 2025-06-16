@@ -74,31 +74,31 @@ DOM (Document Object Model) — это объектная модель доку�
 
 - Получение элемента по ID:
 
-```javascript
-const element = document.getElementById("myElement");
-```
+  ```javascript
+  const element = document.getElementById("myElement");
+  ```
 
 - Изменение текста элемента:
 
-```javascript
-element.textContent = "Новый текст!";
-```
+  ```javascript
+  element.textContent = "Новый текст!";
+  ```
 
 - Добавление обработчика события:
 
-```javascript
-element.addEventListener("click", function () {
-  alert("Элемент был нажат!");
-});
-```
+  ```javascript
+  element.addEventListener("click", function () {
+    alert("Элемент был нажат!");
+  });
+  ```
 
 - Создание и добавление нового элемента:
 
-```javascript
-const newDiv = document.createElement("div");
-newDiv.textContent = "Я новый элемент!";
-document.body.appendChild(newDiv);
-```
+  ```javascript
+  const newDiv = document.createElement("div");
+  newDiv.textContent = "Я новый элемент!";
+  document.body.appendChild(newDiv);
+  ```
 
 DOM позволяет динамически изменять содержимое веб-страниц без перезагрузки, что делает его важным инструментом для создания интерактивных веб-приложений.
 
